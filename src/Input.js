@@ -9,6 +9,10 @@ class Input {
   getLottoNumbersInput() {
     return MissionUtils.Console.readLineAsync(INPUT_MESSAGES.LOTTO_NUMBERS);
   }
+
+  getBonusNumberInput() {
+    return MissionUtils.Console.readLineAsync(INPUT_MESSAGES.BONUS_NUMBER);
+  }
 }
 
 export default Input;

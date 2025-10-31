@@ -38,4 +38,17 @@ describe("Input 클래스 테스트", () => {
     expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(INPUT_MESSAGES.LOTTO_NUMBERS);
     expect(result).toBe(mockReturnValue);
   });
+
+  test("getBonusNumberInput 호출 시 INPUT_MESSAGES.BONUS_NUMBER를 출력하고 사용자 입력을 반환한다", async () => {
+    // given
+    const mockReturnValue = "1000"; 
+    jest.spyOn(MissionUtils.Console, "readLineAsync").mockResolvedValue(mockReturnValue);
+    
+    // when
+    const result = await input.getBonusNumberInput();
+    
+    // then
+    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(INPUT_MESSAGES.BONUS_NUMBER);
+    expect(result).toBe(mockReturnValue);
+  });
 });
