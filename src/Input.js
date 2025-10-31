@@ -13,6 +13,10 @@ class Input {
   getBonusNumberInput() {
     return MissionUtils.Console.readLineAsync(INPUT_MESSAGES.BONUS_NUMBER);
   }
+
+  parseLottoNumbersInput(lottoNumbersInput) {
+    return lottoNumbersInput.split(" ").map(Number);
+  }
 }
 
 export default Input;

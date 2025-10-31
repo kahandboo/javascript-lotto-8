@@ -51,4 +51,30 @@ describe("Input 클래스 테스트", () => {
     expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(INPUT_MESSAGES.BONUS_NUMBER);
     expect(result).toBe(mockReturnValue);
   });
+
+  describe("parseLottoNumbersInput 기능 테스트", () => {
+    let lottoNumbersInput;
+
+    test("공백으로 구분된 문자열을 숫자 배열로 변환한다.", () => {
+      // given
+      lottoNumbersInput = "1 2 3 4 5";
+
+      // when
+      const result = input.parseLottoNumbersInput(lottoNumbersInput);
+
+      // then
+      expect(result).toEqual([1, 2, 3, 4, 5]);
+    });
+
+    test("빈 문자열 입력시 0을 반환한다.", () => {
+      // given
+      lottoNumbersInput = "";
+
+      // when
+      const result = input.parseLottoNumbersInput(lottoNumbersInput);
+
+      // then
+      expect(result).toEqual([0]);
+    });
+  })
 });
