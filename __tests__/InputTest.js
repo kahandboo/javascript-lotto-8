@@ -13,20 +13,20 @@ describe("Input 클래스 테스트", () => {
     jest.restoreAllMocks();
   })
 
-  test("getPurchaseInput 호출 시 INPUT_MESSAGES.PURCHASE를 출력하고 사용자 입력을 반환한다", async () => {
+  test("getPurchaseAmountInput 호출 시 INPUT_MESSAGES.PURCHASE를 출력하고 사용자 입력을 반환한다.", async () => {
     // given
     const mockReturnValue = "1000"; 
     jest.spyOn(MissionUtils.Console, "readLineAsync").mockResolvedValue(mockReturnValue);
     
     // when
-    const result = await input.getPurchaseInput();
+    const result = await input.getPurchaseAmountInput();
     
     // then
-    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(INPUT_MESSAGES.PURCHASE);
+    expect(MissionUtils.Console.readLineAsync).toHaveBeenCalledWith(INPUT_MESSAGES.PURCHASE_AMOUNT);
     expect(result).toBe(mockReturnValue);
   });
 
-  test("getLottoNumbersInput 호출 시 INPUT_MESSAGES.LOTTO_NUMBERS를 출력하고 사용자 입력을 반환한다", async () => {
+  test("getLottoNumbersInput 호출 시 INPUT_MESSAGES.LOTTO_NUMBERS를 출력하고 사용자 입력을 반환한다.", async () => {
     // given
     const mockReturnValue = "1000"; 
     jest.spyOn(MissionUtils.Console, "readLineAsync").mockResolvedValue(mockReturnValue);
@@ -39,7 +39,7 @@ describe("Input 클래스 테스트", () => {
     expect(result).toBe(mockReturnValue);
   });
 
-  test("getBonusNumberInput 호출 시 INPUT_MESSAGES.BONUS_NUMBER를 출력하고 사용자 입력을 반환한다", async () => {
+  test("getBonusNumberInput 호출 시 INPUT_MESSAGES.BONUS_NUMBER를 출력하고 사용자 입력을 반환한다.", async () => {
     // given
     const mockReturnValue = "1000"; 
     jest.spyOn(MissionUtils.Console, "readLineAsync").mockResolvedValue(mockReturnValue);
@@ -76,5 +76,57 @@ describe("Input 클래스 테스트", () => {
       // then
       expect(result).toEqual([0]);
     });
-  })
+  });
+
+  describe("convertPurchaseAmountToNumber 기능 테스트", () => {
+    let purchaseAmountInput;
+
+    test("문자열을 숫자로 변환한다.", () => {
+      // given
+      purchaseAmountInput = "1000";
+
+      // when
+      const result = input.convertPurchaseAmountToNumber(purchaseAmountInput);
+
+      // then
+      expect(result).toEqual(1000);
+    });
+
+    test("빈 문자열 입력시 0을 반환한다.", () => {
+      // given
+      purchaseAmountInput = "";
+
+      // when
+      const result = input.convertPurchaseAmountToNumber(purchaseAmountInput);
+
+      // then
+      expect(result).toEqual(0);
+    });
+  });
+
+  describe("convertBonusNumberToNumber 기능 테스트", () => {
+    let bonusNumberInput;
+
+    test("문자열을 숫자로 변환한다.", () => {
+      // given
+      bonusNumberInput = "123";
+
+      // when
+      const result = input.convertBonusNumberToNumber(bonusNumberInput);
+
+      // then
+      expect(result).toEqual(123);
+    });
+
+    test("빈 문자열 입력시 0을 반환한다.", () => {
+      // given
+      bonusNumberInput = "";
+
+      // when
+      const result = input.convertBonusNumberToNumber(bonusNumberInput);
+
+      // then
+      expect(result).toEqual(0);
+    });
+  });
 });
