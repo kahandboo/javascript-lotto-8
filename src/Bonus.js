@@ -1,3 +1,5 @@
+import { ERROR_MESSAGES } from "./Constants";
+
 class Bonus {
   #number;
 
@@ -7,8 +9,8 @@ class Bonus {
   }
 
   #validate(number) {
-  if (typeof number !== "number" || number < 1 || number > 45) {
-      throw new Error("[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.");
+    if (typeof number !== "number" || number < 1 || number > 45) {
+      throw new Error(ERROR_MESSAGES.BONUS_NUMBER_OUT_OF_RANGE);
     }
   }
 }

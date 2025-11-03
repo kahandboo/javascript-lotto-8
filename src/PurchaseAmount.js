@@ -1,3 +1,5 @@
+import { ERROR_MESSAGES } from "./Constants";
+
 class PurchaseAmount {
   #amount;
 
@@ -16,11 +18,11 @@ class PurchaseAmount {
 
   #validate(amount) {
     if (typeof amount !== "number" || amount < 1000) {
-      throw new Error("[ERROR] 구입금액은 1000원 이상이어야 합니다.");
+      throw new Error(ERROR_MESSAGES.AMOUNT_LESS_THAN_MINIMUM);
     }
 
     if (amount % 1000 !== 0) {
-      throw new Error("[ERROR] 구입금액은 1000원으로 나누어 떨어져야 합니다.");
+      throw new Error(ERROR_MESSAGES.INVALID_AMOUNT_UNIT);
     }
   }
 }
