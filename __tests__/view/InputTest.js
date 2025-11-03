@@ -49,9 +49,9 @@ describe("Input 클래스 테스트", () => {
   describe("parseLottoNumbersInput 기능 테스트", () => {
     let lottoNumbersInput;
 
-    test("공백으로 구분된 문자열을 숫자 배열로 변환한다.", () => {
+    test("콤마으로 구분된 문자열을 숫자 배열로 변환한다.", () => {
       // given
-      lottoNumbersInput = "1 2 3 4 5";
+      lottoNumbersInput = "1,2,3,4,5";
 
       // when
       const result = Input.parseLottoNumbersInput(lottoNumbersInput);
