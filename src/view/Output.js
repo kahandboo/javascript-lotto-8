@@ -35,6 +35,10 @@ class Output {
   static printProfitRate(profitRate) {
     MissionUtils.Console.print(OUTPUT_MESSAGES.TOTAL_RETURN(profitRate));
   }
+
+  static printError(errorMsg) {
+    MissionUtils.Console.print(errorMsg);
+  }
 }
 
 export default Output;

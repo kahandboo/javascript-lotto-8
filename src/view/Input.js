@@ -15,7 +15,7 @@ class Input {
   }
 
   static parseLottoNumbersInput(lottoNumbersInput) {
-    return lottoNumbersInput.split(" ").map(Number);
+    return lottoNumbersInput.split(",").map(Number);
   }
 
   static convertPurchaseAmountToNumber(purchaseAmountInput) {
