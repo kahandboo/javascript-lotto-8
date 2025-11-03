@@ -11,14 +11,17 @@ class LottoGame {
     const matchCount = purchasedLotto.filter(num => this.inputLotto.includes(num)).length;
     const hasBonus = purchasedLotto.includes(this.bonus);
 
-    if (matchCount === 6) return RANK.FIRST;
-    if (matchCount === 5) {
+    if (matchCount === RANK.FIRST.match) return RANK.FIRST;
+    if (matchCount === RANK.SECOND.match) {
       if (hasBonus) return RANK.SECOND;
       else return RANK.THIRD;
     }
-    if (matchCount === 4) return RANK.FOURTH;
-    if (matchCount === 3) return RANK.FIFTH;
-    return RANK.NONE;
+    if (matchCount === RANK.FOURTH.match) return RANK.FOURTH;
+    if (matchCount === RANK.FIFTH.match) return RANK.FIFTH;
+  }
+
+  getAllRanks() {
+    return this.purchasedLottos.map(purchasedLotto => this.determineRank(purchasedLotto));
   }
 }
 
