@@ -6,6 +6,14 @@ class PurchaseAmount {
     this.#amount = amount;
   }
 
+  get amount() {
+    return this.#amount;
+  }
+
+  get count() {
+    return this.#amount / 1000;
+  }
+
   #validate(amount) {
     if (typeof amount !== "number" || amount < 1000) {
       throw new Error("[ERROR] 구입금액은 1000원 이상이어야 합니다.");
