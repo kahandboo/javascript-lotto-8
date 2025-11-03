@@ -53,19 +53,22 @@ describe("Output 클래스 테스트", () => {
     test("구매한 로또 목록을 한 줄씩 순서대로 출력한다.", () => {
       // given
       const lottos = [
-        [1, 2, 3, 4, 5, 6],
-        [7, 8, 9, 10, 11, 12],
+        { numbers: [6, 5, 4, 3, 2, 1] }, 
+        { numbers: [7, 8, 9, 10, 11, 12] },
       ];
-  
+              
+      const expectedOutput1 = "[1, 2, 3, 4, 5, 6]";
+      const expectedOutput2 = "[7, 8, 9, 10, 11, 12]";
+      
       // when
       Output.printPurchasedLottos(lottos);
-  
+      
       // then
       expect(mockPrint).toHaveBeenCalledTimes(2);
-      expect(mockPrint).toHaveBeenNthCalledWith(1, lottos[0]);
-      expect(mockPrint).toHaveBeenNthCalledWith(2, lottos[1]);
+      expect(mockPrint).toHaveBeenNthCalledWith(1, expectedOutput1);
+      expect(mockPrint).toHaveBeenNthCalledWith(2, expectedOutput2);
     });
-  
+    
     test("구매한 로또가 없을 때 아무것도 출력하지 않는다", () => {
       // given
       const lottos = [];

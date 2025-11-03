@@ -1,96 +1,45 @@
 import LottoGame from "../../src/domain/LottoGame";
-import { RANK } from "../../src/utils/Constants";
 
-describe('LottoGame 클래스 테스트', () => {
-  describe('determineRank 기능 테스트', () => {
-    const inputLotto = [1, 2, 3, 4, 5, 6];
-    const bonus = 7;
-    const lottoGame = new LottoGame([], inputLotto, bonus);
-
-    test('6개 번호가 모두 일치하면 1등을 반환한다.', () => {
+describe("LottoGame 클래스 테스트", () => {
+  describe("getAllRanks 기능 테스트", () => {
+    test("구매한 모든 로또에 대해 'determineRank'를 호출하고 그 결과 배열을 반환한다.", () => {
       // given
-      const purchasedLotto = [1, 2, 3, 4, 5, 6];
-
-      // when
-      const result = lottoGame.determineRank(purchasedLotto);
-
-      // then
-      expect(result).toBe(RANK.FIRST);
-    });
-
-    test('5개 번호와 보너스 번호가 일치하면 2등을 반환한다.', () => {
-      // given
-      const purchasedLotto = [1, 2, 3, 4, 5, 7];
-
-      // when
-      const result = lottoGame.determineRank(purchasedLotto);
-
-      // then
-      expect(result).toBe(RANK.SECOND);
-    });
-
-    test('5개 번호만 일치하면 3등을 반환한다.', () => {
-      // given
-      const purchasedLotto = [1, 2, 3, 4, 5, 45];
-
-      // when
-      const result = lottoGame.determineRank(purchasedLotto);
-
-      // then
-      expect(result).toBe(RANK.THIRD);
-    });
-
-    test('4개 번호만 일치하면 4등을 반환한다.', () => {
-      // given
-      const purchasedLotto = [1, 2, 3, 4, 44, 45];
-
-      // when
-      const result = lottoGame.determineRank(purchasedLotto);
-
-      // then
-      expect(result).toBe(RANK.FOURTH);
-    });
-
-    test('3개 번호만 일치하면 5등을 반환한다.', () => {
-      // given
-      const purchasedLotto = [1, 2, 3, 40, 41, 42];
-
-      // when
-      const result = lottoGame.determineRank(purchasedLotto);
-
-      // then
-      expect(result).toBe(RANK.FIFTH);
-    });
-
-    test('2개 이하 일치 시 아무것도 반환하지 않는다.', () => {
-      // given
-      const purchasedLotto = [1, 9, 10, 11, 12, 13];
-
-      // when
-      const result = lottoGame.determineRank(purchasedLotto);
-
-      // then
-      expect(result).toBe();
-    });
-  });
-
-  describe('getAllRanks 기능 테스트', () => {
-    test('모든 구매 로또의 등수를 배열로 반환한다.', () => {
-      // given
-      const purchasedLottos = [
-        [1,2,3,4,5,6],
-        [1,2,3,4,5,7],
-        [1,2,3,4,5,8]
-      ];
-      const inputLotto = [1,2,3,4,5,6];
-      const bonus = 7;
-      const lottoGame = new LottoGame(purchasedLottos, inputLotto, bonus);
-  
-      // when
-      const result = lottoGame.getAllRanks();
+      const mockRankFirst = { key: "FIRST" };
+      const mockRankFifth = { key: "FIFTH" };
+      const mockInputLotto = { id: "inputLotto" }; 
+      const mockBonus = { id: "bonus" }; 
       
+      const mockDetermineRank1 = jest.fn().mockReturnValue(mockRankFirst);
+      const mockLotto1 = { determineRank: mockDetermineRank1 };
+      const mockDetermineRank2 = jest.fn().mockReturnValue(mockRankFifth);
+      const mockLotto2 = { determineRank: mockDetermineRank2 };
+
+      const purchasedLottos = [mockLotto1, mockLotto2];
+      const lottoGame = new LottoGame(purchasedLottos, mockInputLotto, mockBonus);
+
+      // when
+      const ranks = lottoGame.getAllRanks();
+
       // then
-      expect(result).toEqual([RANK.FIRST, RANK.SECOND, RANK.THIRD]);
+      expect(ranks).toEqual([mockRankFirst, mockRankFifth]);
+      expect(mockDetermineRank1).toHaveBeenCalledTimes(1);
+      expect(mockDetermineRank1).toHaveBeenCalledWith(mockInputLotto, mockBonus);
+      expect(mockDetermineRank2).toHaveBeenCalledTimes(1);
+      expect(mockDetermineRank2).toHaveBeenCalledWith(mockInputLotto, mockBonus);
+    });
+
+    test("구매한 로또가 없을 때 빈 배열을 반환한다.", () => {
+      // given
+      const purchasedLottos = [];
+      const mockInputLotto = { id: "inputLotto" };
+      const mockBonus = { id: "bonus" };
+      const lottoGame = new LottoGame(purchasedLottos, mockInputLotto, mockBonus);
+
+      // when
+      const ranks = lottoGame.getAllRanks();
+
+      // then
+      expect(ranks).toEqual([]);
     });
   });
 });
