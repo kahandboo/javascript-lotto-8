@@ -2,27 +2,27 @@ import { INPUT_MESSAGES } from "./Constants";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class Input {
-  getPurchaseAmountInput() {
+  static getPurchaseAmountInput() {
     return MissionUtils.Console.readLineAsync(INPUT_MESSAGES.PURCHASE_AMOUNT);
   }
 
-  getLottoNumbersInput() {
+  static getLottoNumbersInput() {
     return MissionUtils.Console.readLineAsync(INPUT_MESSAGES.LOTTO_NUMBERS);
   }
 
-  getBonusNumberInput() {
+  static getBonusNumberInput() {
     return MissionUtils.Console.readLineAsync(INPUT_MESSAGES.BONUS_NUMBER);
   }
 
-  parseLottoNumbersInput(lottoNumbersInput) {
+  static parseLottoNumbersInput(lottoNumbersInput) {
     return lottoNumbersInput.split(" ").map(Number);
   }
 
-  convertPurchaseAmountToNumber(purchaseAmountInput) {
+  static convertPurchaseAmountToNumber(purchaseAmountInput) {
     return Number(purchaseAmountInput);
   }
 
-  convertBonusNumberToNumber(bonusNumberInput) {
+  static convertBonusNumberToNumber(bonusNumberInput) {
     return Number(bonusNumberInput);
   }
 }
