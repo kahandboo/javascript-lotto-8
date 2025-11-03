@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from "../utils/Constants";
+import { ERROR_MESSAGES } from "../utils/Constants.js";
 
 class Bonus {
   #number;

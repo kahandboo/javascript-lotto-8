@@ -1,4 +1,4 @@
-import Lotto from "../domain/Lotto";
+import Lotto from "../domain/Lotto.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class LottoGenerator {

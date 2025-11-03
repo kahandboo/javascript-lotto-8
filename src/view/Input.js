@@ -1,4 +1,4 @@
-import { INPUT_MESSAGES } from "../utils/Constants";
+import { INPUT_MESSAGES } from "../utils/Constants.js";
 import { MissionUtils } from "@woowacourse/mission-utils";
 
 class Input {

@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { OUTPUT_MESSAGES, RANK } from "../utils/Constants";
+import { OUTPUT_MESSAGES, RANK } from "../utils/Constants.js";
 
 class Output {
   static printPurchaseCount(count) {

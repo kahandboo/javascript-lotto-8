@@ -1,4 +1,4 @@
-import { RANK } from "../utils/Constants";
+import { RANK } from "../utils/Constants.js";
 
 class LottoResult {
   #rankCounts;
