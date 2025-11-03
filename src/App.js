@@ -24,7 +24,7 @@ class App {
 
     const lottoResult = new LottoResult();
     lottoResult.recordRank(ranks);
-    const rankCounts = lottoResult.getRankCounts();
+    const rankCounts = lottoResult.rankCounts;
     const profitRate = lottoResult.calculateProfitRate(purchase.amount);
 
     Output.printRankResults(rankCounts);

@@ -23,7 +23,7 @@ describe("LottoResult 클래스 테스트", () => {
   describe("getRankCounts 기능 테스트", () => {
     test("새 인스턴스가 생성될 때 모든 등수의 카운트를 0으로 초기화한다.", () => {
       // when
-      const counts = lottoResult.getRankCounts();
+      const counts = lottoResult.rankCounts;
 
       // then
       const expectedCounts = {
@@ -45,7 +45,7 @@ describe("LottoResult 클래스 테스트", () => {
 
       // when
       lottoResult.recordRank(ranks);
-      const counts = lottoResult.getRankCounts();
+      const counts = lottoResult.rankCounts;
 
       // then
       const expectedCounts = {
@@ -65,7 +65,7 @@ describe("LottoResult 클래스 테스트", () => {
 
       // when
       lottoResult.recordRank(ranks);
-      const counts = lottoResult.getRankCounts();
+      const counts = lottoResult.rankCounts;
 
       // then
       const expectedCounts = {
@@ -85,7 +85,7 @@ describe("LottoResult 클래스 테스트", () => {
 
       // when
       lottoResult.recordRank(ranks);
-      const counts = lottoResult.getRankCounts();
+      const counts = lottoResult.rankCounts;
 
       // then
       const expectedCounts = {
@@ -105,7 +105,7 @@ describe("LottoResult 클래스 테스트", () => {
 
       // when
       lottoResult.recordRank(ranks);
-      const counts = lottoResult.getRankCounts();
+      const counts = lottoResult.rankCounts;
 
       // then
       const expectedCounts = {
@@ -123,11 +123,11 @@ describe("LottoResult 클래스 테스트", () => {
     test("빈 배열을 받았을 때 아무것도 변경하지 않는다.", () => {
       // given
       const ranks = [];
-      const initialCounts = lottoResult.getRankCounts();
+      const initialCounts = lottoResult.rankCounts;
 
       // when
       lottoResult.recordRank(ranks);
-      const newCounts = lottoResult.getRankCounts();
+      const newCounts = lottoResult.rankCounts;
 
       // then
       expect(newCounts).toEqual(initialCounts);
