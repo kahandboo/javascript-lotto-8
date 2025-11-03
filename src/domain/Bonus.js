@@ -8,6 +8,10 @@ class Bonus {
     this.#number = number;
   }
 
+  get number() {
+    return this.#number;
+  }
+
   #validate(number) {
     if (!Number.isInteger(number) || number < 1 || number > 45) {
       throw new Error(ERROR_MESSAGES.BONUS_NUMBER_OUT_OF_RANGE);

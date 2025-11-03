@@ -14,8 +14,8 @@ class LottoResult {
     };
   }
 
-  getRankCounts() {
-    return this.#rankCounts;
+  get rankCounts() {
+    return {...this.#rankCounts};
   }
 
   recordRank(ranks) {
