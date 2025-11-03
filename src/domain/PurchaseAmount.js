@@ -17,7 +17,7 @@ class PurchaseAmount {
   }
 
   #validate(amount) {
-    if (typeof amount !== "number" || amount < 1000) {
+    if (!Number.isInteger(amount) || amount < 1000) {
       throw new Error(ERROR_MESSAGES.AMOUNT_LESS_THAN_MINIMUM);
     }
 

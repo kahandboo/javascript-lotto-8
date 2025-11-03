@@ -9,7 +9,7 @@ class Bonus {
   }
 
   #validate(number) {
-    if (typeof number !== "number" || number < 1 || number > 45) {
+    if (!Number.isInteger(number) || number < 1 || number > 45) {
       throw new Error(ERROR_MESSAGES.BONUS_NUMBER_OUT_OF_RANGE);
     }
   }

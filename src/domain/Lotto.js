@@ -23,7 +23,7 @@ class Lotto {
     }
 
     numbers.forEach((num) => {
-      if (typeof num !== "number" || num < 1 || num > 45) {
+      if (!Number.isInteger(num) || num < 1 || num > 45) {
         throw new Error(ERROR_MESSAGES.LOTTO_NUMBER_OUT_OF_RANGE);
       }
     });
