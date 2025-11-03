@@ -5,7 +5,7 @@ const INPUT_MESSAGES = {
 };
 
 const RANK = Object.freeze({
-  NONE: {key: 'NONE', match: 2, prize: 0},
+  NONE: { key: 'NONE', match: 2, prize: 0 },
   FIFTH: { key: 'FIFTH', match: 3, prize: 5000 },
   FOURTH: { key: 'FOURTH', match: 4, prize: 50000 },
   THIRD: { key: 'THIRD', match: 5, prize: 1500000 },
