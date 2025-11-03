@@ -8,7 +8,11 @@ class Output {
 
   static printPurchasedLottos(PurchasedLottos) {
     PurchasedLottos.forEach((purchasedLotto) => {
-      MissionUtils.Console.print(purchasedLotto);
+      const numbers = purchasedLotto.numbers;
+      const sortedNumbers = [...numbers].sort((a, b) => a - b);
+      const formattedString = `[${sortedNumbers.join(', ')}]`;
+
+      MissionUtils.Console.print(formattedString);
     });
   }
 
@@ -18,11 +22,13 @@ class Output {
     MissionUtils.Console.print(OUTPUT_MESSAGES.DIVIDER);
 
     ranks.forEach((rank) => {
-      const rankKey = rank.key;
-      const count = rankCounts[rankKey];
-      const formatRankMessage = OUTPUT_MESSAGES[rankKey];
+      if (rank !== RANK.NONE) {
+        const rankKey = rank.key;
+        const count = rankCounts[rankKey];
+        const formatRankMessage = OUTPUT_MESSAGES[rankKey];
 
-      MissionUtils.Console.print(formatRankMessage(count));
+        MissionUtils.Console.print(formatRankMessage(count));
+      }
     });
   }
 
