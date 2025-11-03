@@ -7,7 +7,7 @@ class LottoGame {
     this.bonus = bonus;  
   }
 
-  determineRank(purchasedLotto) {
+  #determineRank(purchasedLotto) {
     const matchCount = purchasedLotto.filter(num => this.inputLotto.includes(num)).length;
     const hasBonus = purchasedLotto.includes(this.bonus);
 
@@ -21,7 +21,7 @@ class LottoGame {
   }
 
   getAllRanks() {
-    return this.purchasedLottos.map(purchasedLotto => this.determineRank(purchasedLotto));
+    return this.purchasedLottos.map(purchasedLotto => this.#determineRank(purchasedLotto));
   }
 }
 
