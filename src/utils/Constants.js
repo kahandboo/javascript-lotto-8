@@ -1,10 +1,11 @@
 const INPUT_MESSAGES = {
   PURCHASE_AMOUNT: "구입금액을 입력해 주세요.\n",
-  LOTTO_NUMBERS: "당첨 번호를 입력해 주세요.\n",
-  BONUS_NUMBER: "보너스 번호를 입력해 주세요.\n",
+  LOTTO_NUMBERS: "\n당첨 번호를 입력해 주세요.\n",
+  BONUS_NUMBER: "\n보너스 번호를 입력해 주세요.\n",
 };
 
 const RANK = Object.freeze({
+  NONE: {key: 'NONE', match: 2, prize: 0},
   FIFTH: { key: 'FIFTH', match: 3, prize: 5000 },
   FOURTH: { key: 'FOURTH', match: 4, prize: 50000 },
   THIRD: { key: 'THIRD', match: 5, prize: 1500000 },
@@ -13,15 +14,15 @@ const RANK = Object.freeze({
 });
 
 const OUTPUT_MESSAGES = {
-  PURCHASE_COUNT: (count) => `${count}개를 구매했습니다.\n`,
-  RESULT_HEADER: "당첨 통계\n", 
-  DIVIDER: "---\n",             
-  FIFTH: (count) => `${RANK.FIFTH.match}개 일치 (${RANK.FIFTH.prize}) - ${count}개\n`,
-  FOURTH: (count) => `${RANK.FOURTH.match}개 일치 (${RANK.FOURTH.prize}) - ${count}개\n`,
-  THIRD: (count) => `${RANK.THIRD.match}개 일치 (${RANK.THIRD.prize}) - ${count}개\n`,
-  SECOND: (count) => `${RANK.SECOND.match}개 일치, 보너스 볼 일치 (${RANK.SECOND.prize}) - ${count}개\n`,
-  FIRST: (count) => `${RANK.FIRST.match}개 일치 (${RANK.FIRST.prize}) - ${count}개\n`,
-  TOTAL_RETURN: (profitRate) => `총 수익률은 ${profitRate}%입니다\n.`
+  PURCHASE_COUNT: (count) => `\n${count}개를 구매했습니다.`,
+  RESULT_HEADER: "\n당첨 통계", 
+  DIVIDER: "---",             
+  FIFTH: (count) => `${RANK.FIFTH.match}개 일치 (${RANK.FIFTH.prize.toLocaleString()}원) - ${count}개`,
+  FOURTH: (count) => `${RANK.FOURTH.match}개 일치 (${RANK.FOURTH.prize.toLocaleString()}원) - ${count}개`,
+  THIRD: (count) => `${RANK.THIRD.match}개 일치 (${RANK.THIRD.prize.toLocaleString()}원) - ${count}개`,
+  SECOND: (count) => `${RANK.SECOND.match}개 일치, 보너스 볼 일치 (${RANK.SECOND.prize.toLocaleString()}원) - ${count}개`,
+  FIRST: (count) => `${RANK.FIRST.match}개 일치 (${RANK.FIRST.prize.toLocaleString()}원) - ${count}개`,
+  TOTAL_RETURN: (profitRate) => `총 수익률은 ${profitRate}%입니다.`
 };
 
 const ERROR_PREFIX = "[ERROR]";
